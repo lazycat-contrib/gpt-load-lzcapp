@@ -1,0 +1,11 @@
+params:
+    - id: auth_key
+      type: string
+      name: "auth key"
+      description: "auth key for login"
+
+locales:
+    zh:
+        auth_key:
+            name: "认证密钥"
+            description: "认证密钥，用于保护管理 API 和 UI 界面"
