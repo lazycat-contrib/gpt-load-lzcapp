@@ -9,7 +9,8 @@ application:
 services:
   gpt-load:
     # ghcr.io/tbphp/gpt-load:v1.0.20
-    image: registry.lazycat.cloud/czyt/tbphp/gpt-load:4121afe5afcbbe55
+    # upstream: ghcr.io/tbphp/gpt-load:v1.4.9
+    image: ghcr.1ms.run/tbphp/gpt-load:v1.4.9
     environment:
       - SERVER_READ_TIMEOUT=60
       - SERVER_WRITE_TIMEOUT=600
@@ -42,7 +43,8 @@ services:
     depends_on:
       - redis
   redis:
-    image: registry.lazycat.cloud/czyt/library/redis:6108db5ea790851d
+    # upstream: docker.io/library/redis:7.4.10
+    image: docker.1ms.run/library/redis:7.4.10
     healthcheck:
       test:
         - CMD-SHELL
