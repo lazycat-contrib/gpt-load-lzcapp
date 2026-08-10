@@ -1,8 +1,8 @@
 params:
     - id: auth_key
-      type: string
-      name: "auth key"
-      description: "auth key for login"
+      type: secret
+      name: "Authentication Key"
+      description: "Authentication key for the management API and web interface"
 
 locales:
     zh:

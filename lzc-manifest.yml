@@ -1,0 +1,53 @@
+application:
+  subdomain: gpt-load
+  background_task: true
+  public_path:
+    - /
+  upstreams:
+    - location: /
+      backend: http://gpt-load:3001/
+services:
+  gpt-load:
+    # ghcr.io/tbphp/gpt-load:v1.0.20
+    image: registry.lazycat.cloud/czyt/tbphp/gpt-load:4121afe5afcbbe55
+    environment:
+      - SERVER_READ_TIMEOUT=60
+      - SERVER_WRITE_TIMEOUT=600
+      - SERVER_IDLE_TIMEOUT=120
+      - SERVER_GRACEFUL_SHUTDOWN_TIMEOUT=10
+      - IS_SLAVE=false
+      - TZ=Asia/Shanghai
+      - AUTH_KEY={{ .U.auth_key }}
+      - REDIS_DSN=redis://redis:6379/0
+      - MAX_CONCURRENT_REQUESTS=100
+      - ENABLE_CORS=true
+      - ALLOWED_ORIGINS=*
+      - ALLOWED_METHODS=GET,POST,PUT,DELETE,OPTIONS
+      - ALLOWED_HEADERS=*
+      - ALLOW_CREDENTIALS=false
+      - LOG_LEVEL=info
+      - LOG_FORMAT=text
+      - LOG_ENABLE_FILE=true
+      - LOG_FILE_PATH=./data/logs/app.log
+    binds:
+      - /lzcapp/var/data:/app/data
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - wget -q --spider -T 10 -O /dev/null http://localhost:3001/health
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    depends_on:
+      - redis
+  redis:
+    image: registry.lazycat.cloud/czyt/library/redis:6108db5ea790851d
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - redis-cli ping
+      interval: 5s
+      timeout: 3s
+      retries: 3
+      start_period: 90s
