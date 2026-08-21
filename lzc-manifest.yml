@@ -43,8 +43,8 @@ services:
     depends_on:
       - redis
   redis:
-    # upstream: docker.io/library/redis:7.4.10
-    image: docker.1ms.run/library/redis:7.4.10
+    # upstream: docker.io/library/redis:7.4.11
+    image: docker.1ms.run/library/redis:7.4.11
     healthcheck:
       test:
         - CMD-SHELL
