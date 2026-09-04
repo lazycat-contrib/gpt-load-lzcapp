@@ -1,5 +1,5 @@
 package: cloud.lazycat.app.gptload
-version: 1.4.10
+version: 1.4.11
 name: GPT Load
 description: 智能密钥轮询的多渠道 AI 代理。
 min_os_version: 1.5.0
