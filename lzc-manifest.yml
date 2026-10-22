@@ -9,8 +9,8 @@ application:
 services:
   gpt-load:
     # ghcr.io/tbphp/gpt-load:v1.0.20
-    # upstream: ghcr.io/tbphp/gpt-load:v1.4.12
-    image: ghcr.1ms.run/tbphp/gpt-load:v1.4.12
+    # upstream: ghcr.io/tbphp/gpt-load:v1.4.13
+    image: ghcr.1ms.run/tbphp/gpt-load:v1.4.13
     environment:
       - SERVER_READ_TIMEOUT=60
       - SERVER_WRITE_TIMEOUT=600
