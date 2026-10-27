@@ -1,6 +1,6 @@
 package: cloud.lazycat.app.gptload
 license: MIT
-version: 1.4.13
+version: 1.4.14
 name: GPT Load
 description: 智能密钥轮询的多渠道 AI 代理。
 min_os_version: 1.5.0
